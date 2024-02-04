@@ -6,7 +6,6 @@ public class FruitController : MonoBehaviour
 {
     #region FIELDS
 
-    
 
     #endregion
 
