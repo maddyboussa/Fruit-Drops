@@ -7,6 +7,7 @@ public class FruitController : MonoBehaviour
     #region FIELDS
 
     [SerializeField] private FruitCollection fruitCollection;
+    [SerializeField] private GameEvent onFruitCollision;
     private bool hasCollided;
 
     #endregion
@@ -44,17 +45,8 @@ public class FruitController : MonoBehaviour
         {
             hasCollided = true;
 
-            //// determine which new fruit to spawn based on this fruit's tag (type)
-            //switch (this.gameObject.tag)
-            //{
-            //    // spawn a new fruit of the next type at this fruit's location
-            //    case "Cherry":
-            //        //InstantiateFruit(FruitType.Strawberry);
-            //        break;
-
-            //    case "Strawberry":
-            //        break;
-            //}
+            // broadcast fruit collision event with the appropriate data (sender and tag of sender)
+            onFruitCollision.Raise(this, this.gameObject.tag);
 
             // *** call event that will "merge" the fruit
             // you will need to send this event info for:
