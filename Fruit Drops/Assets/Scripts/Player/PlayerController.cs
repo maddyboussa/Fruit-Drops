@@ -18,12 +18,15 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float spawnCooldown = 1.0f;
     private bool canDrop = true;
 
+    private GameObject currentFruit;    // stores a reference to the fruit type that will drop
+
     #endregion
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        currentFruit = spawnList[0];
     }
 
     // Update is called once per frame
@@ -31,6 +34,14 @@ public class PlayerController : MonoBehaviour
     {
         // move spawner each frame
         Move();
+    }
+
+    // sets the current fruit that will be active to drop
+    private void SetCurrentFruit()
+    {
+        // alter sprite renderer of the spawner to reflect the fruit that will be dropped
+
+        // set the current fruit
     }
 
     private void Move()
@@ -67,18 +78,21 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    // drops a fruit into the cup
+    // drops a fruit into the cup and queues the next fruit
     IEnumerator Drop()
     {
         canDrop = false;
 
         // drop fruit here by instantiating the right prefab at the spawner's location
-        Instantiate(spawnList[0], new Vector3(transform.position.x, transform.position.y - 0.5f, transform.position.z), Quaternion.identity);
+        Instantiate(currentFruit, new Vector3(transform.position.x, transform.position.y - 0.5f, transform.position.z), Quaternion.identity);
 
         // run coroutine for cooldown
         yield return new WaitForSeconds(spawnCooldown);
 
         // allow player to drop again
         canDrop = true;
+
+        // update current fruit
+        // SetCurrentFruit();
     }
 }

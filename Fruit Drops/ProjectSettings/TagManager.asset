@@ -3,7 +3,18 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Cherry
+  - Grape
+  - Pomegranate
+  - Orange
+  - Apple
+  - Pear
+  - Peach
+  - Pineapple
+  - Melon
+  - Watermelon
+  - Strawberry
   layers:
   - Default
   - TransparentFX
