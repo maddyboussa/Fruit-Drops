@@ -36,7 +36,9 @@ public class PlayerController : MonoBehaviour
         Move();
     }
 
-    // sets the current fruit that will be active to drop
+    /// <summary>
+    /// Sets the current fruit that represents the next active fruit that will be dropped
+    /// </summary>
     private void SetCurrentFruit()
     {
         // alter sprite renderer of the spawner to reflect the fruit that will be dropped
@@ -44,6 +46,9 @@ public class PlayerController : MonoBehaviour
         // set the current fruit
     }
 
+    /// <summary>
+    /// Updates the position of the spawner depending on current direction
+    /// </summary>
     private void Move()
     {
         // calculate intended speed using direction and maxSpeed
@@ -62,13 +67,20 @@ public class PlayerController : MonoBehaviour
         rb.AddForce(movement, ForceMode2D.Force);
     }
 
-    // update player direction when input for move is triggered
+    /// <summary>
+    /// Update player direction when input for move is triggered
+    /// </summary>
+    /// <param name="context"></param>
     public void OnMove(InputAction.CallbackContext context)
     {
         // Get the direction vector based on player input
         direction = context.ReadValue<Vector2>();
     }
 
+    /// <summary>
+    /// Begin the process of dropping a fruit when onDrop is triggered
+    /// </summary>
+    /// <param name="context"></param>
     public void OnDrop(InputAction.CallbackContext context)
     {
         // once cooldown time has elapsed, drop a fruit
@@ -78,7 +90,10 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    // drops a fruit into the cup and queues the next fruit
+    /// <summary>
+    /// Coroutine that drops a fruit into the cup and queues the next fruit
+    /// </summary>
+    /// <returns></returns>
     IEnumerator Drop()
     {
         canDrop = false;

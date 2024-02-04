@@ -23,16 +23,20 @@ public class FruitController : MonoBehaviour
         
     }
 
-    private void InstantiateFruit(FruitType fruit)
-    {
-        // get correct prefab
-        GameObject newFruit = fruitCollection.GetFruitPrefab(fruit);    // next fruit in queue would be strawberry
+    //private void InstantiateFruit(FruitType fruit)
+    //{
+    //    // get correct prefab
+    //    GameObject newFruit = fruitCollection.GetFruitPrefab(fruit);    // next fruit in queue would be strawberry
 
-        // instantiate new fruit at the location of this current fruit
-        Instantiate(newFruit, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
-    }
+    //    // instantiate new fruit at the location of this current fruit
+    //    Instantiate(newFruit, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
+    //}
 
-    private void OnTriggerEnter2D(Collider2D other)
+    /// <summary>
+    /// Checks for collision between fruit and others of its kind when triggered by colliders
+    /// </summary>
+    /// <param name="other"></param>
+    private void OnCollisionEnter2D(Collision2D other)
     {
         // check if colliding with prefab of the same fruit type
         // also check to make sure fruit has not already collided with this object
