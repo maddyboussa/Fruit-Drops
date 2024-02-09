@@ -51,11 +51,12 @@ public class MergeManager : MonoBehaviour
             Debug.Log("merging now");
 
             // switch statement for each tag
-            // then when in the correct tag, call merge fruit according to tag
+            // then when in the correct tag, call merge fruit according to tag by spawning a new fruit at location
 
             switch (sender.gameObject.tag)
             {
-                case "Cherry":
+                case "Cherry":  // if current fruit is a cherry, spawn the next tier which is strawberry
+                    MergeFruit(sender, FruitType.Strawberry);
                     break;
 
                 case "Strawberry":
@@ -64,17 +65,29 @@ public class MergeManager : MonoBehaviour
                 case "Grape":
                     break;
 
-                //case "Cherry":
-                //    break;
+                case "Pomegranate":
+                    break;
 
-                //case "Cherry":
-                //    break;
+                case "Orange":
+                    break;
 
-                //case "Cherry":
-                //    break;
+                case "Apple":
+                    break;
 
-                //case "Cherry":
-                //    break;
+                case "Pear":
+                    break;
+
+                case "Peach":
+                    break;
+
+                case "Pineapple":
+                    break;
+
+                case "Melon":
+                    break;
+
+                case "Watermelon":
+                    break;
             }
 
         }

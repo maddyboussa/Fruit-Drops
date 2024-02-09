@@ -279,6 +279,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52f9c92060d200d4da93233ace753992, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fruitCollection: {fileID: 11400000, guid: 01ffe7d34cdef854c806c38800cea7de, type: 2}
   collisionCooldown: 0.1
 --- !u!114 &740828791
 MonoBehaviour:
