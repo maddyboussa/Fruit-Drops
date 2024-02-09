@@ -41,7 +41,7 @@ public class MergeManager : MonoBehaviour
     /// checks if a collision can be registered, and then merges fruit according to the sender's tag
     /// </summary>
     /// <param name="sender"></param>
-    /// <param name="data"></param>
+    /// <param name="other"></param>
     public void OnFruitCollision(Component sender, object other)
     {
         // only implement collision logic once (until cooldown has elapsed)
@@ -55,48 +55,49 @@ public class MergeManager : MonoBehaviour
             switch (sender.gameObject.tag)
             {
                 case "Cherry":  // if current fruit is a cherry, spawn the next tier which is strawberry
-                    MergeFruit(sender, other, FruitType.Strawberry);
+                    MergeFruit(sender, FruitType.Strawberry);
                     break;
 
                 case "Strawberry":
-                    MergeFruit(sender, other, FruitType.Grape);
+                    MergeFruit(sender, FruitType.Grape);
                     break;
 
                 case "Grape":
-                    MergeFruit(sender, other, FruitType.Pomegranate);
+                    MergeFruit(sender, FruitType.Pomegranate);
                     break;
 
                 case "Pomegranate":
-                    MergeFruit(sender, other, FruitType.Orange);
+                    MergeFruit(sender, FruitType.Orange);
                     break;
 
                 case "Orange":
-                    MergeFruit(sender, other, FruitType.Apple);
+                    MergeFruit(sender, FruitType.Apple);
                     break;
 
                 case "Apple":
-                    MergeFruit(sender, other, FruitType.Pear);
+                    MergeFruit(sender, FruitType.Pear);
                     break;
 
                 case "Pear":
-                    MergeFruit(sender, other, FruitType.Peach);
+                    MergeFruit(sender, FruitType.Peach);
                     break;
 
                 case "Peach":
-                    MergeFruit(sender, other, FruitType.Pineapple);
+                    MergeFruit(sender, FruitType.Pineapple);
                     break;
 
                 case "Pineapple":
-                    MergeFruit(sender, other, FruitType.Melon);
+                    MergeFruit(sender, FruitType.Melon);
                     break;
 
                 case "Melon":
-                    MergeFruit(sender, other, FruitType.Watermelon);
+                    MergeFruit(sender, FruitType.Watermelon);
                     break;
 
-                case "Watermelon":
-                    // do nothing for now
-                    break;
+                // as of right now, we will not be including a case for watermelon
+                //case "Watermelon":
+                //
+                //    break;
             }
 
         }
@@ -107,7 +108,7 @@ public class MergeManager : MonoBehaviour
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="fruit"></param>
-    private void MergeFruit(Component sender, object other, FruitType fruit)
+    private void MergeFruit(Component sender, FruitType fruit)
     {
         // get correct prefab
         GameObject newFruit = fruitCollection.GetFruitPrefab(fruit);

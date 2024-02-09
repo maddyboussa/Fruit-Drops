@@ -280,7 +280,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fruitCollection: {fileID: 11400000, guid: 01ffe7d34cdef854c806c38800cea7de, type: 2}
-  collisionCooldown: 0.1
 --- !u!114 &740828791
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -587,6 +586,7 @@ MonoBehaviour:
   maxSpeed: 5
   spawnList:
   - {fileID: 1695264307502915445, guid: 6c68d7b44b5b37b439f67ca0d12b3df4, type: 3}
+  - {fileID: 1771387474908588041, guid: 6983c5464c2282c458911de551d4be19, type: 3}
   spawnCooldown: 0.5
 --- !u!50 &1462930253
 Rigidbody2D:
@@ -1169,6 +1169,18 @@ PrefabInstance:
     - target: {fileID: 1362849497911650127, guid: 46272b1b15d87de428063a98cd719878, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4358454326065058080, guid: 46272b1b15d87de428063a98cd719878, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4358454326065058080, guid: 46272b1b15d87de428063a98cd719878, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4358454326065058080, guid: 46272b1b15d87de428063a98cd719878, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4358454326065058080, guid: 46272b1b15d87de428063a98cd719878, type: 3}
       propertyPath: m_SortingOrder

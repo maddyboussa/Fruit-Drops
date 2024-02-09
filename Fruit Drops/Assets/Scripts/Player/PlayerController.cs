@@ -26,6 +26,8 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+
+        // set the current fruit to the default (should be cherry, or first element of spawnList)
         currentFruit = spawnList[0];
     }
 
@@ -34,16 +36,63 @@ public class PlayerController : MonoBehaviour
     {
         // move spawner each frame
         Move();
+
+        // ensure that sprite & color of spawner reflects the current fruit
+        GetComponent<SpriteRenderer>().sprite = currentFruit.GetComponent<SpriteRenderer>().sprite;
+        GetComponent<SpriteRenderer>().color = currentFruit.GetComponent<SpriteRenderer>().color;
     }
 
     /// <summary>
     /// Sets the current fruit that represents the next active fruit that will be dropped
+    /// The current fruit will be selected based on proability of spawnable types
     /// </summary>
     private void SetCurrentFruit()
     {
-        // alter sprite renderer of the spawner to reflect the fruit that will be dropped
+        // generate a random float for comparison
+        float randVal = Random.Range(0f, 1f);
 
-        // set the current fruit
+        // determine current fruit based on random value
+        if (randVal < 0.30f)    // 30% chance of spawning a cherry
+        {
+            // set the intended fruit as the current
+            currentFruit = spawnList[0];
+        }
+        else if (randVal < 0.50f)   // 20% chance of spawning a strawberry
+        {
+            currentFruit = spawnList[1];
+        }
+        else if (randVal < 0.65f)   // 15% chance of spawning a grape
+        {
+            // add more fruits to spawn list before i can finish this lolll
+        }
+        else if (randVal < 0.75f)   // 10% chance of spawning a pomegranate
+        {
+
+        }
+        else if (randVal < 0.85f)   // 10% chance of spawning an orange
+        {
+
+        }
+        else if (randVal < 0.90f)   // 5% chance of spawning an apple
+        {
+
+        }
+        else if (randVal < 0.95)    // 5% chance of spawning a pear
+        {
+
+        }
+        else if (randVal < 0.97f)   // 2% chance of spawning a peach
+        {
+
+        }
+        else if (randVal < 0.99f)   // 2% chance of spawning a pineapple
+        {
+
+        }
+        else    // 1% chance of spawning a melon
+        {
+
+        }
     }
 
     /// <summary>
@@ -107,7 +156,7 @@ public class PlayerController : MonoBehaviour
         // allow player to drop again
         canDrop = true;
 
-        // update current fruit
-        // SetCurrentFruit();
+        // update current fruit after drop
+        SetCurrentFruit();
     }
 }

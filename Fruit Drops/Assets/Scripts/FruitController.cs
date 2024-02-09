@@ -34,15 +34,18 @@ public class FruitController : MonoBehaviour
         // also check to make sure fruit has not already collided with this object
         if (other.gameObject.CompareTag(this.gameObject.tag) && !hasCollided)
         {
-            hasCollided = true;
+            // verify that colliding fruits are not watermelons, as they are the last tier and should not be merged
+            if (!this.gameObject.tag.Equals("Watermelon"))
+            {
+                hasCollided = true;
 
-            // broadcast fruit collision event with the appropriate data (sender and object we are colliding with)
-            onFruitCollision.Raise(this, other);
+                // broadcast fruit collision event with the appropriate data (sender and object we are colliding with)
+                onFruitCollision.Raise(this, other);
 
-            // destroy this fruit and fruit we collided with
-            // except if colliding fruits are of type watermelon, in which case do not destroy
-            Destroy(other.gameObject);
-            Destroy(this.gameObject);
+                // destroy this fruit and fruit we collided with
+                Destroy(other.gameObject);
+                Destroy(this.gameObject);
+            }
         }
     }
 }
