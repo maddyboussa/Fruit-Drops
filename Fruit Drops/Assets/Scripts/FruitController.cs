@@ -36,10 +36,11 @@ public class FruitController : MonoBehaviour
         {
             hasCollided = true;
 
-            // broadcast fruit collision event with the appropriate data (sender and tag of sender)
-            onFruitCollision.Raise(this, this.gameObject.tag);
+            // broadcast fruit collision event with the appropriate data (sender and object we are colliding with)
+            onFruitCollision.Raise(this, other);
 
             // destroy this fruit and fruit we collided with
+            // except if colliding fruits are of type watermelon, in which case do not destroy
             Destroy(other.gameObject);
             Destroy(this.gameObject);
         }
