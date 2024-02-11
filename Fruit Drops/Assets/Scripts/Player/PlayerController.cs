@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     private bool canDrop = true;
 
     private GameObject currentFruit;    // stores a reference to the fruit type that will drop
+    [SerializeField] List<float> spawnRates;    // elements in this list should add to 100
 
     #endregion
 
@@ -51,47 +52,48 @@ public class PlayerController : MonoBehaviour
         // generate a random float for comparison
         float randVal = Random.Range(0f, 1f);
 
-        // determine current fruit based on random value
-        if (randVal < 0.30f)    // 30% chance of spawning a cherry
+        // determine current fruit based on random percentage
+        // by referring to a variable for the spawn rate, this means other game components can alter spawn rates dynamically
+        if (randVal < spawnRates[0])
         {
             // set the intended fruit as the current
             currentFruit = spawnList[0];
         }
-        else if (randVal < 0.50f)   // 20% chance of spawning a strawberry
+        else if (randVal < spawnRates[1])
         {
             currentFruit = spawnList[1];
         }
-        else if (randVal < 0.65f)   // 15% chance of spawning a grape
+        else if (randVal < spawnRates[2])
         {
-            // add more fruits to spawn list before i can finish this lolll
+            currentFruit = spawnList[2];
         }
-        else if (randVal < 0.75f)   // 10% chance of spawning a pomegranate
+        else if (randVal < spawnRates[3])
         {
-
+            currentFruit = spawnList[3];
         }
-        else if (randVal < 0.85f)   // 10% chance of spawning an orange
+        else if (randVal < spawnRates[4])
         {
-
+            currentFruit = spawnList[4];
         }
-        else if (randVal < 0.90f)   // 5% chance of spawning an apple
+        else if (randVal < spawnRates[5])
         {
-
+            currentFruit = spawnList[5];
         }
-        else if (randVal < 0.95)    // 5% chance of spawning a pear
+        else if (randVal < spawnRates[6])
         {
-
+            currentFruit = spawnList[6];
         }
-        else if (randVal < 0.97f)   // 2% chance of spawning a peach
+        else if (randVal < spawnRates[7])
         {
-
+            currentFruit = spawnList[7];
         }
-        else if (randVal < 0.99f)   // 2% chance of spawning a pineapple
+        else if (randVal < spawnRates[8])
         {
-
+            currentFruit = spawnList[8];
         }
-        else    // 1% chance of spawning a melon
+        else
         {
-
+            currentFruit = spawnList[9];
         }
     }
 
@@ -110,7 +112,7 @@ public class PlayerController : MonoBehaviour
         Vector2 speedDif = targetSpeed - rb.velocity;
 
         // calculate acceleration and force of movement
-        Vector2 movement = speedDif * 1;// accel rate
+        Vector2 movement = speedDif * 1;
 
         // Convert this to a vector and apply to rigidbody
         rb.AddForce(movement, ForceMode2D.Force);
@@ -147,8 +149,11 @@ public class PlayerController : MonoBehaviour
     {
         canDrop = false;
 
+        // get radius of the next fruit to ensure it doesn't spawn overlapping the spawner
+        //float radius = currentFruit.transform.localScale.y;
+
         // drop fruit here by instantiating the right prefab at the spawner's location
-        Instantiate(currentFruit, new Vector3(transform.position.x, transform.position.y - 0.5f, transform.position.z), Quaternion.identity);
+        Instantiate(currentFruit, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
 
         // run coroutine for cooldown
         yield return new WaitForSeconds(spawnCooldown);

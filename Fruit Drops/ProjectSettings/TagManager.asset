@@ -15,6 +15,7 @@ TagManager:
   - Melon
   - Watermelon
   - Strawberry
+  - Spawner
   layers:
   - Default
   - TransparentFX
@@ -51,4 +52,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Spawner
+    uniqueID: 1084822011
+    locked: 0
+  - name: Fruit
+    uniqueID: 1298489689
     locked: 0

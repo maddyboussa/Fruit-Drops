@@ -73,8 +73,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1298489689
+  m_SortingLayer: 2
   m_SortingOrder: 1
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 1, g: 0, b: 0, a: 1}
@@ -136,5 +136,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97cf80c3bd5a6d844894a75db3de5ee3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fruitCollection: {fileID: 11400000, guid: 01ffe7d34cdef854c806c38800cea7de, type: 2}
   onFruitCollision: {fileID: 11400000, guid: 559e580e18de0164ba505411c4d540a5, type: 2}
+  spawner: {fileID: 4631445927308846141, guid: 46272b1b15d87de428063a98cd719878, type: 3}

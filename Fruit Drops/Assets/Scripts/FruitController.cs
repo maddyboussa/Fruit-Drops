@@ -8,6 +8,7 @@ public class FruitController : MonoBehaviour
 
     [SerializeField] private GameEvent onFruitCollision;
     private bool hasCollided;
+    [SerializeField] private GameObject spawner;
 
     #endregion
 
@@ -15,6 +16,9 @@ public class FruitController : MonoBehaviour
     void Start()
     {
         hasCollided = false;
+
+        // make sure all fruit ignore collisions with spawner
+        Physics2D.IgnoreCollision(GetComponent<CircleCollider2D>(), spawner.GetComponent<CircleCollider2D>());
     }
 
     // Update is called once per frame
