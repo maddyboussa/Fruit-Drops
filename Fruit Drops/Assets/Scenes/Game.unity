@@ -1038,20 +1038,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4358454326065058080, guid: 46272b1b15d87de428063a98cd719878, type: 3}
-      propertyPath: m_SortingLayer
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4358454326065058080, guid: 46272b1b15d87de428063a98cd719878, type: 3}
-      propertyPath: m_SortingLayerID
-      value: 1084822011
-      objectReference: {fileID: 0}
     - target: {fileID: 4631445927308846141, guid: 46272b1b15d87de428063a98cd719878, type: 3}
       propertyPath: m_Name
-      value: Spawner
-      objectReference: {fileID: 0}
-    - target: {fileID: 4631445927308846141, guid: 46272b1b15d87de428063a98cd719878, type: 3}
-      propertyPath: m_TagString
       value: Spawner
       objectReference: {fileID: 0}
     m_RemovedComponents: []

@@ -100,6 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   onFruitCollision: {fileID: 11400000, guid: 559e580e18de0164ba505411c4d540a5, type: 2}
+  spawner: {fileID: 4631445927308846141, guid: 46272b1b15d87de428063a98cd719878, type: 3}
 --- !u!50 &8568049686380775941
 Rigidbody2D:
   serializedVersion: 4
