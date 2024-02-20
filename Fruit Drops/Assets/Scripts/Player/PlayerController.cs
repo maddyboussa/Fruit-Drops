@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviour
     private Vector3 direction = new Vector3(0, 0, 0);
     [SerializeField] float lerpAmount = 0;
     [SerializeField] float maxSpeed = 1.0f;
+    [SerializeField] float spawnLeftBound;
+    [SerializeField] float spawnRightBound;
 
     // spawn fields
     [SerializeField] List<GameObject> spawnList;
@@ -38,6 +40,16 @@ public class PlayerController : MonoBehaviour
         // move spawner each frame
         Move();
 
+        // ensure spawner doesn't move past bounds
+        if (transform.position.x < spawnLeftBound)
+        {
+            transform.position = new Vector3(spawnLeftBound, transform.position.y, transform.position.z);
+        }
+        if (transform.position.x > spawnRightBound)
+        {
+            transform.position = new Vector3(spawnRightBound, transform.position.y, transform.position.z);
+        }
+         
         // ensure that sprite & color of spawner reflects the current fruit
         GetComponent<SpriteRenderer>().sprite = currentFruit.GetComponent<SpriteRenderer>().sprite;
         GetComponent<SpriteRenderer>().color = currentFruit.GetComponent<SpriteRenderer>().color;
@@ -148,9 +160,6 @@ public class PlayerController : MonoBehaviour
     IEnumerator Drop()
     {
         canDrop = false;
-
-        // get radius of the next fruit to ensure it doesn't spawn overlapping the spawner
-        //float radius = currentFruit.transform.localScale.y;
 
         // drop fruit here by instantiating the right prefab at the spawner's location
         Instantiate(currentFruit, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);

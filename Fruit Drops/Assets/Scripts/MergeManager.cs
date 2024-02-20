@@ -9,6 +9,8 @@ public class MergeManager : MonoBehaviour
     [SerializeField] private FruitCollection fruitCollection;
     private float collisionCooldown = 0.00001f;
     private bool canCollide = true;
+    private float score = 0;
+    [SerializeField] private GameEvent onScoreChanged;
 
     #endregion
 
@@ -56,47 +58,57 @@ public class MergeManager : MonoBehaviour
             {
                 case "Cherry":  // if current fruit is a cherry, spawn the next tier which is strawberry
                     MergeFruit(sender, FruitType.Strawberry);
+                    // increment score based on which type was merged]
+                    score += 3;
                     break;
 
                 case "Strawberry":
                     MergeFruit(sender, FruitType.Grape);
+                    score += 6;
                     break;
 
                 case "Grape":
                     MergeFruit(sender, FruitType.Pomegranate);
+                    score += 10;
                     break;
 
                 case "Pomegranate":
                     MergeFruit(sender, FruitType.Orange);
+                    score += 15;
                     break;
 
                 case "Orange":
                     MergeFruit(sender, FruitType.Apple);
+                    score += 21;
                     break;
 
                 case "Apple":
                     MergeFruit(sender, FruitType.Pear);
+                    score += 28;
                     break;
 
                 case "Pear":
                     MergeFruit(sender, FruitType.Peach);
+                    score += 36;
                     break;
 
                 case "Peach":
                     MergeFruit(sender, FruitType.Pineapple);
+                    score += 45;
                     break;
 
                 case "Pineapple":
                     MergeFruit(sender, FruitType.Melon);
+                    score += 55;
                     break;
 
                 case "Melon":
                     MergeFruit(sender, FruitType.Watermelon);
+                    score += 66;
                     break;
 
-                // as of right now, we will not be including a case for watermelon
+                // as of right now, there will be no case for watermelon
                 //case "Watermelon":
-                //
                 //    break;
             }
 
