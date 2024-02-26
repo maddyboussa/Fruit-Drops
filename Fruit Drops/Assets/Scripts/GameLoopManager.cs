@@ -5,7 +5,7 @@ using UnityEngine;
 public class GameLoopManager : MonoBehaviour
 {
     #region FIELDS
-    private float score;
+    private float gameScore;
 
     #endregion
 
@@ -21,10 +21,14 @@ public class GameLoopManager : MonoBehaviour
 
     }
 
-    // void onScoreChanged()
-    //{
+    /// <summary>
+    /// updates the game score based on any changes in score from other game objects
+    /// </summary>
+    public void OnScoreChanged(Component sender, object scoreData)
+    {
         // store the incoming score as the "game" score
-    //}
+        gameScore = (float)scoreData;
+    }
 
 
     // this script will handle the "win" conditions, saving high scores, etc.

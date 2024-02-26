@@ -51,14 +51,12 @@ public class MergeManager : MonoBehaviour
         {
             StartCoroutine(CollisionCooldown());
 
-            // switch statement for each tag
-            // then when in the correct tag, call merge fruit according to tag by spawning a new fruit at location
-
+            // call merge fruit according to the tag (fruit type) of the collision sender
             switch (sender.gameObject.tag)
             {
                 case "Cherry":  // if current fruit is a cherry, spawn the next tier which is strawberry
                     MergeFruit(sender, FruitType.Strawberry);
-                    // increment score based on which type was merged]
+                    // increment score based on which type was merged
                     score += 3;
                     break;
 
@@ -111,6 +109,9 @@ public class MergeManager : MonoBehaviour
                 //case "Watermelon":
                 //    break;
             }
+
+            // broadcast change in score to listeners
+            onScoreChanged.Raise(this, score);
 
         }
     }
