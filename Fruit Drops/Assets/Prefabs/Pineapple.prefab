@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 5355945452564900748}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 7.53, y: -3.55, z: 0}
-  m_LocalScale: {x: 2.5154235, y: 2.5154235, z: 2.5154235}
+  m_LocalScale: {x: 0.49019364, y: 0.49019364, z: 0.49019364}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -76,8 +76,8 @@ SpriteRenderer:
   m_SortingLayerID: 1298489689
   m_SortingLayer: 2
   m_SortingOrder: 1
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 1, g: 0.93979645, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 9d579236e4975354bbc9587060f5a5d4, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -100,9 +100,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.013076977, y: -0.38221702}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 2.241204
 --- !u!50 &5388135794675372407
 Rigidbody2D:
   serializedVersion: 4
@@ -137,4 +137,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   onFruitCollision: {fileID: 11400000, guid: 559e580e18de0164ba505411c4d540a5, type: 2}
-  spawner: {fileID: 4631445927308846141, guid: 46272b1b15d87de428063a98cd719878, type: 3}
