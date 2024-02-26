@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] float spawnCooldown = 1.0f;
     private bool canDrop = true;
+    [SerializeField] Sprite spawnSprite;
 
     private GameObject currentFruit;    // stores a reference to the fruit type that will drop
     [SerializeField] List<float> spawnRates;    // elements in this list should add to 100
@@ -32,6 +33,8 @@ public class PlayerController : MonoBehaviour
 
         // set the current fruit to the default (should be cherry, or first element of spawnList)
         currentFruit = spawnList[0];
+        GetComponent<SpriteRenderer>().sprite = currentFruit.GetComponent<SpriteRenderer>().sprite;
+        transform.localScale = currentFruit.transform.localScale;
     }
 
     // Update is called once per frame
@@ -49,10 +52,6 @@ public class PlayerController : MonoBehaviour
         {
             transform.position = new Vector3(spawnRightBound, transform.position.y, transform.position.z);
         }
-         
-        // ensure that sprite & color of spawner reflects the current fruit
-        GetComponent<SpriteRenderer>().sprite = currentFruit.GetComponent<SpriteRenderer>().sprite;
-        GetComponent<SpriteRenderer>().color = currentFruit.GetComponent<SpriteRenderer>().color;
     }
 
     /// <summary>
@@ -107,6 +106,10 @@ public class PlayerController : MonoBehaviour
         {
             currentFruit = spawnList[9];
         }
+
+        // ensure that sprite & color & size of spawner reflects the current fruit
+        GetComponent<SpriteRenderer>().sprite = currentFruit.GetComponent<SpriteRenderer>().sprite;
+        transform.localScale = currentFruit.transform.localScale;
     }
 
     /// <summary>
@@ -163,6 +166,10 @@ public class PlayerController : MonoBehaviour
 
         // drop fruit here by instantiating the right prefab at the spawner's location
         Instantiate(currentFruit, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
+
+        // while on cooldown, change spawn sprite back to its default
+        GetComponent<SpriteRenderer>().sprite = spawnSprite;
+        transform.localScale = new Vector3(0.03267056f, 0.03267056f, 0.03267056f);
 
         // run coroutine for cooldown
         yield return new WaitForSeconds(spawnCooldown);
