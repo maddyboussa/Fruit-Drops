@@ -26,7 +26,6 @@ public class UIManager : MonoBehaviour
 
     public void OnScoreChanged(Component sender, object scoreData)
     {
-        Debug.Log(scoreText);
         scoreText.text = scoreData.ToString();
     }
 }
