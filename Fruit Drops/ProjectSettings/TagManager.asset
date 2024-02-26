@@ -59,3 +59,6 @@ TagManager:
   - name: Fruit
     uniqueID: 1298489689
     locked: 0
+  - name: UI
+    uniqueID: 1067587307
+    locked: 0
