@@ -33,6 +33,8 @@ public class UIManager : MonoBehaviour
     public void Pause()
     {
         // first check for game over -- skipping for now
+
+
         // if game is not over, verify game is not already paused
         if (paused)
         {
@@ -55,7 +57,7 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    public void Resume()
+    private void Resume()
     {
         // deactivate pause menu
         pauseMenu.SetActive(false);
