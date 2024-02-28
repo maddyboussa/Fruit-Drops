@@ -24,12 +24,9 @@ public class UIManager : MonoBehaviour
         paused = false;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    /// <summary>
+    /// Toggles the paused state of the game on and off
+    /// </summary>
     public void Pause()
     {
         // first check for game over -- skipping for now
@@ -57,6 +54,9 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Resumes the game
+    /// </summary>
     private void Resume()
     {
         // deactivate pause menu
@@ -68,7 +68,11 @@ public class UIManager : MonoBehaviour
         paused = false;
     }
 
-
+    /// <summary>
+    /// Listens for a change in score from other scripts, and updates score UI accordingly
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="scoreData"></param>
     public void OnScoreChanged(Component sender, object scoreData)
     {
         scoreText.text = scoreData.ToString();
