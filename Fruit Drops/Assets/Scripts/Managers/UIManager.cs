@@ -68,6 +68,8 @@ public class UIManager : MonoBehaviour
         paused = false;
     }
 
+    
+
     /// <summary>
     /// Listens for a change in score from other scripts, and updates score UI accordingly
     /// </summary>
