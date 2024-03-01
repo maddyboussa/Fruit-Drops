@@ -6,6 +6,7 @@ public class GameLoopManager : MonoBehaviour
 {
     #region FIELDS
     private float gameScore;
+    [SerializeField] private GameEvent onGameOver;
 
     #endregion
 
@@ -33,4 +34,6 @@ public class GameLoopManager : MonoBehaviour
 
     // this script will handle the "win" conditions, saving high scores, etc.
     // it will need a reference to the current score??
+
+    // when game is over raise onGameOver.Raise(...) event
 }

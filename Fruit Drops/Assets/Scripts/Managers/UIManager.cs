@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class UIManager : MonoBehaviour
@@ -14,14 +15,17 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject pauseMenu;
     private bool paused;
 
+    private bool gameOver;
+
     #endregion
 
     // Start is called before the first frame update
     void Start()
     {
-        // deactivate pause menu on start
+        // deactivate pause menu on start and set default values
         pauseMenu.SetActive(false);
         paused = false;
+        gameOver = false;
     }
 
     /// <summary>
@@ -29,28 +33,29 @@ public class UIManager : MonoBehaviour
     /// </summary>
     public void Pause()
     {
-        // first check for game over -- skipping for now
-
-
-        // if game is not over, verify game is not already paused
-        if (paused)
+        // first ensure game has not already ended
+        if (!gameOver)
         {
-            // if so, resume game
-            Resume();
-        }
-        else
-        {
-            // if unpaused, pause the game and activate the pause menu
-            // activate pause menu canvas
-            pauseMenu.SetActive(true);
+            // if game is not over, verify game is not already paused
+            if (paused)
+            {
+                // if so, resume game
+                Resume();
+            }
+            else
+            {
+                // if unpaused, pause the game and activate the pause menu
+                // activate pause menu canvas
+                pauseMenu.SetActive(true);
 
-            // make sure cursor is visible
-            //Cursor.visible = true;
+                // make sure cursor is visible
+                //Cursor.visible = true;
 
-            // freeze time
-            Time.timeScale = 0.0f;
+                // freeze time
+                Time.timeScale = 0.0f;
 
-            paused = true;
+                paused = true;
+            }
         }
     }
 
@@ -68,8 +73,15 @@ public class UIManager : MonoBehaviour
         paused = false;
     }
 
-    
+    /// <summary>
+    /// Loads main menu scene
+    /// </summary>
+    public void MainMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
 
+    
     /// <summary>
     /// Listens for a change in score from other scripts, and updates score UI accordingly
     /// </summary>
@@ -78,5 +90,16 @@ public class UIManager : MonoBehaviour
     public void OnScoreChanged(Component sender, object scoreData)
     {
         scoreText.text = scoreData.ToString();
+    }
+
+    /// <summary>
+    /// Listens for a change in the status of game over conditions
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="scoreData"></param>
+    public void OnGameOver(Component sender, object scoreData)
+    {
+        // update this script's knowledge of game over status
+        gameOver = true;
     }
 }
