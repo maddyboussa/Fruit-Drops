@@ -26,6 +26,9 @@ public class UIManager : MonoBehaviour
         pauseMenu.SetActive(false);
         paused = false;
         gameOver = false;
+
+        // ensure time isn't frozen
+        Time.timeScale = 1.0f;
     }
 
     /// <summary>
@@ -81,7 +84,25 @@ public class UIManager : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
-    
+    /// <summary>
+    /// Loads game scene
+    /// </summary>
+    public void Restart()
+    {
+        SceneManager.LoadScene(1);
+    }
+
+    /// <summary>
+    /// Opens the options sub-menu
+    /// </summary>
+    public void OpenOptions()
+    {
+        Debug.Log("Options open");
+
+        // open options here
+    }
+
+
     /// <summary>
     /// Listens for a change in score from other scripts, and updates score UI accordingly
     /// </summary>
