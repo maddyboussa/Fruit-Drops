@@ -100,6 +100,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   onFruitCollision: {fileID: 11400000, guid: 559e580e18de0164ba505411c4d540a5, type: 2}
+  addDangerCollision: {fileID: 11400000, guid: 899173814fac5db4f9a788310482249b, type: 2}
+  removeDangerCollision: {fileID: 11400000, guid: 69b4b4bb19c16e04fbdfd25f49b9fe3d, type: 2}
 --- !u!50 &8568049686380775941
 Rigidbody2D:
   serializedVersion: 4

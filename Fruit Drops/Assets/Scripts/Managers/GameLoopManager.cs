@@ -7,28 +7,53 @@ public class GameLoopManager : MonoBehaviour
     #region FIELDS
     private float gameScore;
     [SerializeField] private GameEvent onGameOver;
+    private int numInDanger;
 
     #endregion
 
     // Start is called before the first frame update
     void Start()
     {
-
+        numInDanger = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        // if there are 4 or more fruit in danger zone, game is over
+        if (numInDanger >= 4)
+        {
+            Debug.Log("game over");
+        }
     }
 
     /// <summary>
-    /// updates the game score based on any changes in score from other game objects
+    /// Updates the game score based on any changes in score from other game objects
     /// </summary>
     public void OnScoreChanged(Component sender, object scoreData)
     {
         // store the incoming score as the "game" score
         gameScore = (float)scoreData;
+    }
+
+    /// <summary>
+    /// Increments number of fruit currently in danger zone
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="other"></param>
+    public void OnAddDangerCollision(Component sender, object other)
+    {
+        numInDanger++;
+    }
+
+    /// <summary>
+    /// Decrements number of fruit currently in danger zone
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="other"></param>
+    public void OnRemoveDangerCollision(Component sender, object other)
+    {
+        numInDanger--;
     }
 
 

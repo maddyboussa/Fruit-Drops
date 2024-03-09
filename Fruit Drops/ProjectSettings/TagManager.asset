@@ -16,6 +16,7 @@ TagManager:
   - Watermelon
   - Strawberry
   - Spawner
+  - DangerZone
   layers:
   - Default
   - TransparentFX

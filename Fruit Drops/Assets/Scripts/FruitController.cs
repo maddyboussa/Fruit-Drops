@@ -9,6 +9,9 @@ public class FruitController : MonoBehaviour
     [SerializeField] private GameEvent onFruitCollision;
     private bool hasCollided;
 
+    [SerializeField] private GameEvent addDangerCollision;
+    [SerializeField] private GameEvent removeDangerCollision;
+
     #endregion
 
     // Start is called before the first frame update
@@ -25,7 +28,7 @@ public class FruitController : MonoBehaviour
 
 
     /// <summary>
-    /// Checks for collision between fruit and others of its kind when triggered by colliders
+    /// Listens for collision between fruit and others of its kind when triggered by colliders
     /// </summary>
     /// <param name="other"></param>
     private void OnCollisionEnter2D(Collision2D other)
@@ -46,6 +49,39 @@ public class FruitController : MonoBehaviour
                 Destroy(other.gameObject);
                 Destroy(this.gameObject);
             }
+        }
+    }
+
+    /// <summary>
+    /// Listens for entry collision between collider and trigger collider
+    /// </summary>
+    /// <param name="other"></param>
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        // ensure colliding with danger box
+        if (other.gameObject.CompareTag("DangerZone"))
+        {
+            // raise add event
+            addDangerCollision.Raise(this, other);
+
+            // change color to red to indicate inside danger zone
+            GetComponent<SpriteRenderer>().color = Color.red;
+        }
+    }
+
+    /// <summary>
+    /// Listens for exit collision between collider and trigger collider
+    /// </summary>
+    /// <param name="other"></param>
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("DangerZone"))
+        {
+            // raise remove event
+            removeDangerCollision.Raise(this, other);
+
+            // change color back to default (white)
+            GetComponent<SpriteRenderer>().color = Color.white;
         }
     }
 }
