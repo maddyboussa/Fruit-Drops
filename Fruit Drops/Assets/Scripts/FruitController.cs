@@ -65,6 +65,7 @@ public class FruitController : MonoBehaviour
             addDangerCollision.Raise(this, other);
 
             // change color to red to indicate inside danger zone
+            // eventually, it will add/remove a shader to outline the object in red
             GetComponent<SpriteRenderer>().color = Color.red;
         }
     }
