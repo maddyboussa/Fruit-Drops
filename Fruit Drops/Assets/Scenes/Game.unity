@@ -627,7 +627,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &332211290
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3745,6 +3745,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1987145776}
   m_CullTransparentMesh: 1
+--- !u!1 &2008809269 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4631445927308846141, guid: 46272b1b15d87de428063a98cd719878, type: 3}
+  m_PrefabInstance: {fileID: 1407150482725364563}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2008809270 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1462930252, guid: 46272b1b15d87de428063a98cd719878, type: 3}
+  m_PrefabInstance: {fileID: 1407150482725364563}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2008809269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad2c907f2d738e046be97bea39e297fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2008809276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2008809269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c21189504e5bf66418bbf8b12f9714ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 925f5eca4121c1d41808c3542078bee6, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2008809270}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: OnScoreChanged
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2016969603
 GameObject:
   m_ObjectHideFlags: 0
@@ -4306,6 +4350,42 @@ PrefabInstance:
     - target: {fileID: 1462930249, guid: 46272b1b15d87de428063a98cd719878, type: 3}
       propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 1462930252, guid: 46272b1b15d87de428063a98cd719878, type: 3}
+      propertyPath: spawnRates.Array.data[0]
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1462930252, guid: 46272b1b15d87de428063a98cd719878, type: 3}
+      propertyPath: spawnRates.Array.data[1]
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1462930252, guid: 46272b1b15d87de428063a98cd719878, type: 3}
+      propertyPath: spawnRates.Array.data[2]
+      value: 0.95
+      objectReference: {fileID: 0}
+    - target: {fileID: 1462930252, guid: 46272b1b15d87de428063a98cd719878, type: 3}
+      propertyPath: spawnRates.Array.data[3]
+      value: 0.97
+      objectReference: {fileID: 0}
+    - target: {fileID: 1462930252, guid: 46272b1b15d87de428063a98cd719878, type: 3}
+      propertyPath: spawnRates.Array.data[4]
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1462930252, guid: 46272b1b15d87de428063a98cd719878, type: 3}
+      propertyPath: spawnRates.Array.data[5]
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1462930252, guid: 46272b1b15d87de428063a98cd719878, type: 3}
+      propertyPath: spawnRates.Array.data[6]
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1462930252, guid: 46272b1b15d87de428063a98cd719878, type: 3}
+      propertyPath: spawnRates.Array.data[7]
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1462930252, guid: 46272b1b15d87de428063a98cd719878, type: 3}
+      propertyPath: spawnRates.Array.data[8]
+      value: 1.1
       objectReference: {fileID: 0}
     - target: {fileID: 1362849497911650127, guid: 46272b1b15d87de428063a98cd719878, type: 3}
       propertyPath: m_RootOrder

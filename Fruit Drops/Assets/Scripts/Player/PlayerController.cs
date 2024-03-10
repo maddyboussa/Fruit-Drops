@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Sprite spawnSprite;
 
     private GameObject currentFruit;    // stores a reference to the fruit type that will drop
-    [SerializeField] List<float> spawnRates;    // elements in this list should add to 100
+    [SerializeField] List<float> spawnRates;    // elements in this list should add to 100 (represent percentages)
 
     #endregion
 
@@ -65,6 +65,7 @@ public class PlayerController : MonoBehaviour
 
         // determine current fruit based on random percentage
         // by referring to a variable for the spawn rate, this means other game components can alter spawn rates dynamically
+        // initial spawn rates will be heavily skewed in favor of smaller (low level) fruits
         if (randVal < spawnRates[0])
         {
             // set the intended fruit as the current
@@ -179,5 +180,95 @@ public class PlayerController : MonoBehaviour
 
         // update current fruit after drop
         SetCurrentFruit();
+    }
+
+    /// <summary>
+    /// Listens for changes in score as broadcasted by other game objects
+    /// Alters spawn rates according to score
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="scoreData"></param>
+    public void OnScoreChanged(Component sender, object scoreData)
+    {
+        switch ((float)scoreData)
+        {
+            case > 1500:
+                // check to see if spawn rates have already been altered
+                if (spawnRates[9] >= 1.1f)  // 1.1f is the default value for spawnRates[9]  
+                {
+                    spawnRates[9] = 1f;
+                }
+                break;
+
+            case > 1000:
+                // check to see if spawn rates have already been altered
+                if (spawnRates[8] >= 1.1f)  // 1.1f is the default value for spawnRates[8]  
+                {
+                    // alter spawn rates (if not previously altered for this score)
+                    spawnRates[0] = 0.2f;
+                    spawnRates[1] = 0.5f;
+                    spawnRates[2] = 0.7f;
+                    spawnRates[3] = 0.87f;
+                    spawnRates[4] = 0.9f;
+                    spawnRates[5] = 0.93f;
+                    spawnRates[6] = 0.95f;
+                    spawnRates[7] = 0.97f;
+                    spawnRates[8] = 0.99f;
+                }
+                break;
+
+            case > 650:
+                // check to see if spawn rates have already been altered
+                if (spawnRates[7] >= 1.1f)  // 1.1f is the default value for spawnRates[7]  
+                {
+                    // alter spawn rates (if not previously altered for this score)
+                    spawnRates[6] = 0.97f;
+                    spawnRates[7] = 0.99f;
+                }
+                break;
+
+            case > 400:
+                // check to see if spawn rates have already been altered
+                if (spawnRates[6] >= 1.1f)  // 1.1f is the default value for spawnRates[6]  
+                {
+                    // alter spawn rates (if not previously altered for this score)
+                    spawnRates[0] = 0.3f;
+                    spawnRates[1] = 0.6f;
+                    spawnRates[2] = 0.75f;
+                    spawnRates[3] = 0.85f;
+                    spawnRates[4] = 0.93f;
+                    spawnRates[5] = 0.97f;
+                    spawnRates[6] = 0.99f;
+                }
+                break;
+
+            case > 250:
+                // check to see if spawn rates have already been altered
+                if (spawnRates[5] >= 1.1f)  // 1.1f is the default value for spawnRates[5]  
+                {
+                    // alter spawn rates (if not previously altered for this score)
+                    // no change this increment for other spawn rates
+                    spawnRates[4] = 0.97f;
+                    spawnRates[5] = 0.99f;
+                }
+                break;
+
+            case > 100:
+                // check to see if spawn rates have already been altered
+                if (spawnRates[4] >= 1.1f)  // 1.1f is the default value for spawnRates[4]  
+                {
+                    // alter spawn rates (if not previously altered for this score)
+                    spawnRates[0] = 0.4f;
+                    spawnRates[1] = 0.7f;
+                    spawnRates[2] = 0.85f;
+                    spawnRates[3] = 0.9f;
+                    spawnRates[4] = 0.99f;
+                }
+                break;
+
+            default:
+                break;
+        }
+
     }
 }
