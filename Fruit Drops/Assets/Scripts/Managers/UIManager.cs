@@ -10,11 +10,14 @@ public class UIManager : MonoBehaviour
 
     // reference to score text
     [SerializeField] private TMP_Text scoreText;
+    [SerializeField] private TMP_Text gameOverScoreText;
 
     // reference to pause menu
     [SerializeField] private GameObject pauseMenu;
     private bool paused;
 
+    // reference to game ove rmenu
+    [SerializeField] private GameObject gameOverMenu;
     private bool gameOver;
 
     #endregion
@@ -22,9 +25,10 @@ public class UIManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // deactivate pause menu on start and set default values
+        // deactivate pause and game over menus on start and set default values
         pauseMenu.SetActive(false);
         paused = false;
+        gameOverMenu.SetActive(false);
         gameOver = false;
 
         // ensure time isn't frozen
@@ -47,6 +51,8 @@ public class UIManager : MonoBehaviour
             }
             else
             {
+                // update current highscore on pause menu panel
+
                 // if unpaused, pause the game and activate the pause menu
                 // activate pause menu canvas
                 pauseMenu.SetActive(true);
@@ -122,5 +128,14 @@ public class UIManager : MonoBehaviour
     {
         // update this script's knowledge of game over status
         gameOver = true;
+
+        // update score text to match final score
+        gameOverScoreText.text = scoreText.text;
+
+        // open game over menu
+        gameOverMenu.SetActive(true);
+
+        // freeze time
+        Time.timeScale = 0.0f;
     }
 }

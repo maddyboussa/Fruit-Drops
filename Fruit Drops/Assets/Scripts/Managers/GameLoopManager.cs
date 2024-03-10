@@ -7,6 +7,8 @@ public class GameLoopManager : MonoBehaviour
     #region FIELDS
     private float gameScore;
     [SerializeField] private GameEvent onGameOver;
+
+    [SerializeField] private int numInDangerToLose = 4;
     private int numInDanger;
 
     #endregion
@@ -21,9 +23,10 @@ public class GameLoopManager : MonoBehaviour
     void Update()
     {
         // if there are 4 or more fruit in danger zone, game is over
-        if (numInDanger >= 4)
+        if (numInDanger >= numInDangerToLose)
         {
-            Debug.Log("game over");
+            // raise game over event to telegraph ending to UI manager
+            onGameOver.Raise(this, gameScore);
         }
     }
 
